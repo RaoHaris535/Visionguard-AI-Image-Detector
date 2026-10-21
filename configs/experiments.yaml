@@ -1,0 +1,31 @@
+experiments:
+  - name: mobilenet_reference
+    learning_rate: 0.001
+    dropout: 0.30
+    unfreeze_layers: 20
+    augmentation: standard
+  - name: lower_learning_rate
+    learning_rate: 0.0003
+    dropout: 0.30
+    unfreeze_layers: 20
+    augmentation: standard
+  - name: higher_dropout
+    learning_rate: 0.001
+    dropout: 0.50
+    unfreeze_layers: 20
+    augmentation: standard
+  - name: fewer_unfrozen_layers
+    learning_rate: 0.001
+    dropout: 0.30
+    unfreeze_layers: 10
+    augmentation: standard
+  - name: more_unfrozen_layers
+    learning_rate: 0.001
+    dropout: 0.30
+    unfreeze_layers: 40
+    augmentation: standard
+  - name: no_fine_tuning
+    learning_rate: 0.001
+    dropout: 0.30
+    unfreeze_layers: 0
+    augmentation: standard

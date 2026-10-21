@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="VisionGuard AI-generated image classifier">
+    <title>{% block title %}VisionGuard{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="{{ url_for('index') }}" aria-label="VisionGuard home">
+        <span class="brand-mark" aria-hidden="true">VG</span>
+        <span>VisionGuard</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="{{ url_for('index') }}">Analyze</a>
+        <a href="{{ url_for('history') }}">History</a>
+        <a href="{{ url_for('health') }}">Health</a>
+      </nav>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>
+      <p>Predictions are probabilistic signals, not proof of image origin.</p>
+    </footer>
+  </body>
+</html>

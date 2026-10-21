@@ -1,0 +1,39 @@
+project:
+  name: VisionGuard AI Image Detector
+  seed: 42
+  positive_class: ai_generated
+
+data:
+  root: data/raw
+  audit_csv: data/audit/images.csv
+  split_dir: data/splits
+  image_size: [224, 224]
+  batch_size: 32
+  validation_fraction: 0.15
+  test_fraction: 0.15
+  aspect_ratio: pad
+
+training:
+  epochs: 30
+  patience: 5
+  reduce_lr_patience: 2
+  baseline_learning_rate: 0.001
+  transfer_learning_rate: 0.001
+  fine_tune_learning_rate: 0.00001
+  dropout: 0.30
+  backbone: MobileNetV2
+  unfreeze_layers: 20
+
+evaluation:
+  threshold_objective: f1
+  worse_error: fake_classified_as_real
+
+tracking:
+  experiment_name: visionguard-model-development
+  enabled: true
+  autolog_transfer_model: true
+
+outputs:
+  artifact_dir: artifacts
+  model_dir: models
+  figure_dir: reports/figures

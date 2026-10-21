@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Analysis result | VisionGuard{% endblock %}
+{% block content %}
+<section class="result-shell">
+  <p class="eyebrow">Analysis complete</p>
+  <h1>{{ result.label }}</h1>
+  <div class="confidence" style="--confidence: {{ '%.1f'|format(result.confidence * 100) }}%">
+    <div class="confidence-head"><span>Model confidence</span><strong>{{ '%.1f'|format(result.confidence * 100) }}%</strong></div>
+    <div class="meter"><span></span></div>
+  </div>
+  <dl class="result-details">
+    <div><dt>File</dt><dd>{{ filename }}</dd></div>
+    <div><dt>AI probability</dt><dd>{{ '%.3f'|format(result.ai_probability) }}</dd></div>
+    <div><dt>Decision threshold</dt><dd>{{ '%.3f'|format(result.threshold) }}</dd></div>
+    <div><dt>Model version</dt><dd>{{ model_version }}</dd></div>
+  </dl>
+  <p class="caveat"><strong>Important limitation.</strong> Image generators and editing tools change rapidly. Treat this result as supporting evidence and review source context before making consequential decisions.</p>
+  <a class="button-link" href="{{ url_for('index') }}">Analyze another image</a>
+</section>
+{% endblock %}

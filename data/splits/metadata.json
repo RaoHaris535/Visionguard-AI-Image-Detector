@@ -1,0 +1,8 @@
+{
+  "seed": 42,
+  "counts": {
+    "train": 681,
+    "validation": 146,
+    "test": 146
+  }
+}

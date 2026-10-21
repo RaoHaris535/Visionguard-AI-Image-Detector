@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Prediction history | VisionGuard{% endblock %}
+{% block content %}
+<section class="page-heading">
+  <p class="eyebrow">Audit trail</p>
+  <h1>Prediction history</h1>
+  <p>Recent decisions are shown without retaining uploaded images.</p>
+</section>
+<section class="table-shell">
+  {% if records %}
+  <table>
+    <thead><tr><th>Time</th><th>File</th><th>Verdict</th><th>Confidence</th><th>Model</th><th>Source</th></tr></thead>
+    <tbody>
+      {% for record in records %}
+      <tr>
+        <td>{{ record.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        <td>{{ record.original_filename }}</td>
+        <td><span class="status">{{ record.verdict }}</span></td>
+        <td>{{ '%.1f'|format(record.confidence * 100) }}%</td>
+        <td>{{ record.model_version }}</td>
+        <td>{{ record.inference_source }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty-state">No predictions have been recorded yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

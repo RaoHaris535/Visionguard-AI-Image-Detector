@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Analyze an image | VisionGuard{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">AI image provenance screening</p>
+    <h1>Inspect an image for signs of AI generation</h1>
+    <p class="lede">Upload one image to receive a classification, calibrated confidence, and the model threshold used for the decision.</p>
+  </div>
+  <form class="upload-panel" method="post" action="{{ url_for('predict') }}" enctype="multipart/form-data">
+    <label for="image">Image file</label>
+    <input id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp,image/bmp" required>
+    <p class="help">JPG, PNG, WEBP, or BMP. Maximum {{ max_upload_mb }} MB. The uploaded file is processed in memory and is not retained.</p>
+    <button type="submit">Analyze image</button>
+  </form>
+</section>
+<section class="explanation" aria-labelledby="how-heading">
+  <div>
+    <p class="eyebrow">How it works</p>
+    <h2 id="how-heading">A reproducible decision pipeline</h2>
+  </div>
+  <ol class="steps">
+    <li><span>01</span><strong>Validate</strong><p>Reject unsafe file types, oversized payloads, and undecodable content.</p></li>
+    <li><span>02</span><strong>Classify</strong><p>Apply the same resize and preprocessing steps used during model training.</p></li>
+    <li><span>03</span><strong>Record</strong><p>Store the verdict, confidence, time, and model version for traceability.</p></li>
+  </ol>
+</section>
+{% endblock %}

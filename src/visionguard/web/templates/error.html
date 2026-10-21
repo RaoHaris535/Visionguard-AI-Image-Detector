@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Unable to analyze image | VisionGuard{% endblock %}
+{% block content %}
+<section class="result-shell error-shell">
+  <p class="eyebrow">Request not completed</p>
+  <h1>We could not analyze that image</h1>
+  <p class="lede">{{ message }}</p>
+  <a class="button-link" href="{{ url_for('index') }}">Return to upload</a>
+</section>
+{% endblock %}

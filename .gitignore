@@ -1,0 +1,47 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+.venv/
+.tools/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Data, models, and experiment artifacts
+/data/processed/
+/data/audit/
+/models/*
+!/models/.gitkeep
+/artifacts/*
+!/artifacts/.gitkeep
+/mlruns/
+*.keras
+*.h5
+*.sqlite
+*.sqlite3
+*.db
+
+# Generated evidence and reports
+/reports/screenshots/*
+/output/
+/tmp/
+
+# DVC local credentials/cache
+/.dvc/cache/
+/.dvc/tmp/
+/.dvc/config.local
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
